@@ -300,7 +300,7 @@ class CanvaApp(APIApplication):
             dict[str, Any]: OK
 
         Tags:
-            brand_template
+            brand_template, important
         """
         url = f"{self.base_url}/v1/brand-templates"
         query_params = {k: v for k, v in [('query', query), ('continuation', continuation), ('ownership', ownership), ('sort_by', sort_by)] if v is not None}
@@ -491,7 +491,7 @@ class CanvaApp(APIApplication):
             dict[str, Any]: OK
 
         Tags:
-            design
+            design, important
         """
         url = f"{self.base_url}/v1/designs"
         query_params = {k: v for k, v in [('query', query), ('continuation', continuation), ('ownership', ownership), ('sort_by', sort_by)] if v is not None}
@@ -836,7 +836,7 @@ class CanvaApp(APIApplication):
             dict[str, Any]: OK
 
         Tags:
-            user
+            user, important
         """
         url = f"{self.base_url}/v1/users/me"
         query_params = {}
