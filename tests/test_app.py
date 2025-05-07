@@ -2,29 +2,29 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from universal_mcp_canva.app import Canva
+from universal_mcp_canva.app import CanvaApp
 
 @pytest.fixture
 def app_instance():
-    """Provides a Canva instance for tests."""
+    """Provides a CanvaApp instance for tests."""
     mock_integration = MagicMock()
     mock_integration.get_credentials.return_value = {"access_token": "dummy_access_token"}
 
-    return Canva(integration=mock_integration)
+    return CanvaApp(integration=mock_integration)
 
-def test_universal_mcp_canva_app_initialization(app_instance):
+def test_universal_mcp_CanvaApp_app_initialization(app_instance):
     """
-    Test that the Canva instance is initialized correctly with a name.
+    Test that the CanvaApp instance is initialized correctly with a name.
     """
     assert hasattr(app_instance, 'name'), "Application instance should have a 'name' attribute."
     assert isinstance(app_instance.name, str), "Application name should be a string."
     assert app_instance.name.strip() != "", "Application name should not be empty."
-    assert app_instance.name == "canva", "Canva instance has unexpected name."
+    assert app_instance.name == "canva", "CanvaApp instance has unexpected name."
 
 
-def test_universal_mcp_canva_tool_docstrings_format(app_instance):
+def test_universal_mcp_CanvaApp_tool_docstrings_format(app_instance):
     """
-    Test that each tool method in Canva has a well-formatted docstring,
+    Test that each tool method in CanvaApp has a well-formatted docstring,
     including summary, Args, Returns, and Tags sections.
     Checks for Raises section optionally.
     """
@@ -53,9 +53,9 @@ def test_universal_mcp_canva_tool_docstrings_format(app_instance):
         assert "tags:" in docstring_lower, f"Docstring for '{tool_name}' is missing 'Tags:' section."
 
 
-def test_universal_mcp_canva_tools_are_callable(app_instance):
+def test_universal_mcp_CanvaApp_tools_are_callable(app_instance):
     """
-    Test that each tool method returned by list_tools in Canva is callable.
+    Test that each tool method returned by list_tools in CanvaApp is callable.
     """
     tools = app_instance.list_tools()
     assert isinstance(tools, list), "list_tools() should return a list."

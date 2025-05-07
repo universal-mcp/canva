@@ -2,9 +2,9 @@ from typing import Any
 from universal_mcp.applications import APIApplication
 from universal_mcp.integrations import Integration
 
-class Canva(APIApplication):
+class CanvaApp(APIApplication):
     def __init__(self, integration: Integration = None, **kwargs) -> None:
-        super().__init__(name='canvaapp', integration=integration, **kwargs)
+        super().__init__(name='canva', integration=integration, **kwargs)
         self.base_url = "https://api.canva.com/rest"
 
     def v1_apps_appid_jwks(self, appId) -> dict[str, Any]:
